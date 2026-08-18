@@ -22,6 +22,10 @@ jobs:
         with:
           repository: modelcontextprotocol/static
           path: static-repo
+          # No ref pinned — tracks the default branch. If a ref is ever added here,
+          # it MUST be the full 40-char SHA: actions/checkout treats anything shorter
+          # as a ref-name glob and fails when nothing matches (broke faf-agent's
+          # cards.yml the same way, fixed 2026-08-18).
 
       - name: Sync schemas from static repo
         run: |
